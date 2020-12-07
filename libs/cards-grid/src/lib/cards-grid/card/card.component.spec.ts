@@ -33,4 +33,14 @@ describe('CardComponent', () => {
 
     expect(titleElement.textContent).toEqual(titleText);
   });
+
+  it(`should set an image according to the image property`, function() {
+    const imageSrc = 'https://image.src/';
+    component.imageSrc = imageSrc;
+    fixture.detectChanges();
+
+    const titleElement = fixture.debugElement.query(By.css('.image')).nativeElement;
+
+    expect(titleElement.src).toEqual(imageSrc);
+  });
 });
