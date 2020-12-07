@@ -6,5 +6,7 @@ import { CardComponent } from './cards-grid/card/card.component';
 @NgModule({
   imports: [CommonModule],
   declarations: [CardsGridComponent, CardComponent],
+  exports: [CardsGridComponent, CardComponent]
 })
-export class CardsGridModule {}
+export class CardsGridModule {
+}
