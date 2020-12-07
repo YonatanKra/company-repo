@@ -188,6 +188,44 @@
           }
         }
       }
+    },
+    "cards-grid": {
+      "projectType": "library",
+      "root": "libs/cards-grid",
+      "sourceRoot": "libs/cards-grid/src",
+      "prefix": "company-repo",
+      "architect": {
+        "build": {
+          "builder": "@nrwl/angular:package",
+          "options": {
+            "tsConfig": "libs/cards-grid/tsconfig.lib.json",
+            "project": "libs/cards-grid/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "libs/cards-grid/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/cards-grid/src/**/*.ts"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/cards-grid/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      },
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      }
     }
   },
   "cli": {

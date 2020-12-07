@@ -3,5 +3,6 @@ module.exports = {
     '<rootDir>/apps/unicorn-hunt',
     '<rootDir>/apps/api',
     '<rootDir>/libs/api-interfaces',
+    '<rootDir>/libs/cards-grid',
   ],
 };

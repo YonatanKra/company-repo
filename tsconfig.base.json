@@ -16,7 +16,8 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@company-repo/api-interfaces": ["libs/api-interfaces/src/index.ts"]
+      "@company-repo/api-interfaces": ["libs/api-interfaces/src/index.ts"],
+      "@unicorn/cards-grid": ["libs/cards-grid/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
