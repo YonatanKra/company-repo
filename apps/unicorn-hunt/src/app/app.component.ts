@@ -1,6 +1,4 @@
 import { Component } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Message } from '@company-repo/api-interfaces';
 
 @Component({
   selector: 'company-repo-root',
@@ -8,6 +6,37 @@ import { Message } from '@company-repo/api-interfaces';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  hello$ = this.http.get<Message>('/api/hello');
-  constructor(private http: HttpClient) {}
+  cards = [
+    {
+      title: 'Jane',
+      imageSrc: 'https://www.w3schools.com/howto/img_avatar2.png',
+      description: 'An amazing manager'
+    },
+    {
+      title: 'John',
+      imageSrc: 'https://www.w3schools.com/howto/img_avatar.png',
+      description: 'A star developer'
+    },
+    {
+      title: 'Jina',
+      imageSrc: 'https://www.w3schools.com/howto/img_avatar2.png',
+      description: 'Super Architect'
+    },
+    {
+      title: 'Don',
+      imageSrc: 'https://www.w3schools.com/howto/img_avatar.png',
+      description: 'Ace marketer'
+    },
+    {
+      title: 'Karen',
+      imageSrc: 'https://www.w3schools.com/howto/img_avatar2.png',
+      description: 'UX Master'
+    },
+    {
+      title: 'Bond',
+      imageSrc: 'https://www.w3schools.com/howto/img_avatar.png',
+      description: '007'
+    },
+  ];
+  constructor() {}
 }
