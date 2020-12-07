@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CardComponent } from './card.component';
+import { By } from '@angular/platform-browser';
 
 describe('CardComponent', () => {
   let component: CardComponent;
@@ -23,4 +24,13 @@ describe('CardComponent', () => {
     expect(component).toBeTruthy();
   });
 
+  it(`should have a title with the title's text`, function() {
+    const titleText = 'Title text'
+    component.title = titleText;
+    fixture.detectChanges();
+
+    const titleElement = fixture.debugElement.query(By.css('.title')).nativeElement;
+
+    expect(titleElement.textContent).toEqual(titleText);
+  });
 });
