@@ -43,4 +43,14 @@ describe('CardComponent', () => {
 
     expect(titleElement.src).toEqual(imageSrc);
   });
+
+  it(`should set a description according to the description property`, function() {
+    const description = 'A nice person';
+    component.description = description;
+    fixture.detectChanges();
+
+    const titleElement = fixture.debugElement.query(By.css('.description')).nativeElement;
+
+    expect(titleElement.textContent).toEqual(description);
+  });
 });

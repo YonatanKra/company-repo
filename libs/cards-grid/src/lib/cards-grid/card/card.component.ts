@@ -8,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class CardComponent implements OnInit {
   title: string;
   imageSrc: string;
+  description: string;
 
   constructor() { }
 
