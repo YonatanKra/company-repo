@@ -1,10 +1,20 @@
-import { Directive } from '@angular/core';
+import { AfterViewInit, Directive, ElementRef, OnDestroy } from '@angular/core';
 
 @Directive({
-  selector: '[companyRepoStickyScroll]'
+  selector: '[unicornStickyScroll]'
 })
-export class StickyScrollDirective {
+export class StickyScrollDirective implements AfterViewInit, OnDestroy{
 
-  constructor() { }
+  constructor(private ref: ElementRef) { }
+
+  ngOnDestroy(): void {
+    const {scrollTop, id} = this.ref.nativeElement;
+    localStorage.setItem(id, scrollTop);
+  }
+
+  ngAfterViewInit(): void {
+    const scrollTop = localStorage.getItem(this.ref.nativeElement.id);
+    this.ref.nativeElement.scrollTop = scrollTop;
+  }
 
 }
