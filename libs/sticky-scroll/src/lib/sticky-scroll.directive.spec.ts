@@ -14,9 +14,15 @@ class TestHostComponent {
   show = true;
 }
 describe('StickyScrollDirective', () => {
+  function getWrappingElement() {
+    return fixture.debugElement.query(By.css('[unicornStickyScroll]')).nativeElement;
+  }
+
   let testHostComponent: TestHostComponent;
   let fixture: ComponentFixture<TestHostComponent>;
+
   beforeEach(async function() {
+    localStorage.clear();
     await TestBed.configureTestingModule({
       declarations: [TestHostComponent],
       imports: [StickyScrollModule]
@@ -33,9 +39,6 @@ describe('StickyScrollDirective', () => {
   });
 
   it(`should restore the scrollTop of the directive's element`, async function() {
-    function getWrappingElement() {
-      return fixture.debugElement.query(By.css('[unicornStickyScroll]')).nativeElement;
-    }
     const startingScrollTop = getWrappingElement().scrollTop;
     getWrappingElement().scrollTop = 500;
     testHostComponent.show = false;
@@ -45,6 +48,26 @@ describe('StickyScrollDirective', () => {
 
     expect(startingScrollTop).toEqual(0);
     expect(getWrappingElement().scrollTop).toEqual(500);
+  });
+
+  it(`should set the scrollTop after reload of a page`, async function() {
+    getWrappingElement().scrollTop = 400;
+    window.dispatchEvent(new Event('beforeunload'));
+
+    const directive = fixture.debugElement.query(By.css('[unicornStickyScroll]')).injector.get(StickyScrollDirective);
+    getWrappingElement().scrollTop = 0;
+    const startingScrollTop = getWrappingElement().scrollTop;
+    directive.ngAfterViewInit();
+
+    expect(startingScrollTop).toEqual(0);
+    expect(getWrappingElement().scrollTop).toEqual(400);
+  });
+
+  it(`should remove beforeunload listener on destroy`, function() {
+    window.removeEventListener = jest.fn();
+    const directive = fixture.debugElement.query(By.css('[unicornStickyScroll]')).injector.get(StickyScrollDirective);
+    directive.ngOnDestroy();
+    expect(window.removeEventListener).toHaveBeenCalledWith('beforeunload', directive.ngOnDestroy);
   });
 
 });
