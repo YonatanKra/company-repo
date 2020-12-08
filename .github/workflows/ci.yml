@@ -28,3 +28,12 @@ jobs:
 
       - name: Test
         run: yarn test:ci
+
+  auto-merge:
+    needs: build-test
+    runs-on: ubuntu-latest
+    steps:
+      - name: automerge
+        uses: "pascalgn/automerge-action@v0.12.0"
+        env:
+          GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
