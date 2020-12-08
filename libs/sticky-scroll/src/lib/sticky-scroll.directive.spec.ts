@@ -2,6 +2,7 @@ import { StickyScrollDirective } from './sticky-scroll.directive';
 import { Component, ElementRef } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
+import { StickyScrollModule } from '@unicorn/sticky-scroll';
 
 @Component({
   selector: `host-component`,
@@ -17,7 +18,8 @@ describe('StickyScrollDirective', () => {
   let fixture: ComponentFixture<TestHostComponent>;
   beforeEach(async function() {
     await TestBed.configureTestingModule({
-      declarations: [StickyScrollDirective, TestHostComponent]
+      declarations: [TestHostComponent],
+      imports: [StickyScrollModule]
     }).compileComponents();
 
     fixture = TestBed.createComponent(TestHostComponent);
