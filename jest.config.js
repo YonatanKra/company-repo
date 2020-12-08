@@ -4,5 +4,6 @@ module.exports = {
     '<rootDir>/apps/api',
     '<rootDir>/libs/api-interfaces',
     '<rootDir>/libs/cards-grid',
+    '<rootDir>/libs/sticky-scroll',
   ],
 };

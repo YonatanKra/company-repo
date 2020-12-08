@@ -226,6 +226,44 @@
           "style": "scss"
         }
       }
+    },
+    "sticky-scroll": {
+      "projectType": "library",
+      "root": "libs/sticky-scroll",
+      "sourceRoot": "libs/sticky-scroll/src",
+      "prefix": "company-repo",
+      "architect": {
+        "build": {
+          "builder": "@nrwl/angular:package",
+          "options": {
+            "tsConfig": "libs/sticky-scroll/tsconfig.lib.json",
+            "project": "libs/sticky-scroll/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "libs/sticky-scroll/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/sticky-scroll/src/**/*.ts"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/sticky-scroll/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      },
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      }
     }
   },
   "cli": {

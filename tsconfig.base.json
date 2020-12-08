@@ -17,7 +17,8 @@
     "baseUrl": ".",
     "paths": {
       "@company-repo/api-interfaces": ["libs/api-interfaces/src/index.ts"],
-      "@unicorn/cards-grid": ["libs/cards-grid/src/index.ts"]
+      "@unicorn/cards-grid": ["libs/cards-grid/src/index.ts"],
+      "@unicorn/sticky-scroll": ["libs/sticky-scroll/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
