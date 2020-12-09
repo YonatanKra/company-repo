@@ -20,3 +20,7 @@ export class CardsGridComponent implements OnInit {
   }
 
 }
+
+function notCovered() {
+  console.log('Not covered');
+}
