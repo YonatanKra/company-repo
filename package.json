@@ -9,7 +9,7 @@
     "start": "ng serve",
     "build": "ng build",
     "test": "ng test",
-    "test:ci": "ng run-many --target=test --all --parallel --coverage --coverageReporters=lcov && node tools/merge-report.js",
+    "test:ci": "ng run-many --target=test --skip-nx-cache --all --parallel --coverage --coverageReporters=lcov && node tools/merge-report.js",
     "lint": "nx workspace-lint && ng lint",
     "e2e": "ng e2e",
     "affected:apps": "nx affected:apps",
