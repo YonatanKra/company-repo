@@ -27,9 +27,7 @@ jobs:
         run: yarn install
 
       - name: Test
-        run: |
-          yarn test:ci
-          nyc report --reporter=lcov --temp-dir=coverage
+        run: yarn test:ci
 
       - name: Code coverage
         uses: coverallsapp/github-action@master
