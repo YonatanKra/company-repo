@@ -1,10 +1,12 @@
-# CompanyRepo
+[![Coverage Status](https://coveralls.io/repos/github/YonatanKra/company-repo/badge.svg?branch=main)](https://coveralls.io/github/YonatanKra/company-repo?branch=main)
+
+# Company Repo
+
+This is our company's repository!
+
+We're going to have amazing things in here!
 
 This project was generated using [Nx](https://nx.dev).
-
-<p align="center"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-logo.png" width="450"></p>
-
-🔎 **Nx is a set of Extensible Dev Tools for Monorepos.**
 
 ## Quick Start & Documentation
 

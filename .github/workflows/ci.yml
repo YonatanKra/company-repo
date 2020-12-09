@@ -21,13 +21,18 @@ jobs:
           node-version: 14
 
       - name: Install yarn
-        run: npm install -g yarn
+        run: npm install -g yarn nyc
 
       - name: Install dependencies
         run: yarn install
 
       - name: Test
         run: yarn test:ci
+
+      - name: Code coverage
+        uses: coverallsapp/github-action@master
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
 
   auto-merge:
     needs: build-test
@@ -37,3 +42,6 @@ jobs:
         uses: "pascalgn/automerge-action@v0.12.0"
         env:
           GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+        with:
+          MERGE_METHOD: "squash"
+          MERGE_COMMIT_MESSAGE: "pull-request-title"
