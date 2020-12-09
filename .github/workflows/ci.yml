@@ -28,3 +28,17 @@ jobs:
 
       - name: Test
         run: yarn test:ci
+
+      - name: Add automerge label
+        uses: actions-ecosystem/action-add-labels@v1
+        if: ${{ startsWith(github.event.comment.body, '/add-labels') }}
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          labels: automerge
+
+      - name: automerge
+          uses: "pascalgn/automerge-action@v0.12.0"
+          env:
+            GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+            MERGE_METHOD: "squash"
+            MERGE_COMMIT_MESSAGE: "pull-request-title"
