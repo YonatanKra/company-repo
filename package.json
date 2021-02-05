@@ -11,6 +11,7 @@
     "test": "ng test",
     "test:ci": "ng run-many --target=test --all --parallel",
     "lint": "nx workspace-lint && ng lint",
+    "lint:ci": "yarn nx run-many --target=lint --all --parallel",
     "e2e": "ng e2e",
     "affected:apps": "nx affected:apps",
     "affected:libs": "nx affected:libs",
