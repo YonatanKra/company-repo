@@ -38,5 +38,4 @@ export class AppComponent {
       description: '007'
     },
   ];
-  constructor() {}
 }
