@@ -1,6 +1,6 @@
 {
   "name": "company-repo",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "license": "MIT",
   "scripts": {
     "ng": "nx",
@@ -8,7 +8,7 @@
     "nx": "nx",
     "start": "ng serve",
     "build": "ng build",
-    "build:deploy": "nx build unicorn-hunt --prod --baseHref=/unicorn-hunt --deployUrl=/unicorn-hunt/",
+    "build:deploy": "nx build unicorn-hunt --prod --baseHref=/company-repo --deployUrl=/company-repo/",
     "test": "ng test",
     "test:ci": "ng run-many --target=test --all --parallel --skip-nx-cache --coverage --coverageReporters=lcov && node ./tools/coverageMerger.js",
     "lint": "nx workspace-lint && ng lint",
