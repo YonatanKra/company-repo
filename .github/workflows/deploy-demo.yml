@@ -1,0 +1,62 @@
+name: Deploy Demo Site
+
+on:
+  push:
+    tags:
+      - v*
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    env:
+      ARTIFACTORY_AUTH_TOKEN: ${{secrets.ARTIFACTORY_AUTH_TOKEN}}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - name: Setup NodeJS 14
+        uses: actions/setup-node@v1
+        with:
+          node-version: 14
+
+      - name: Install yarn
+        run: npm install -g yarn
+
+      - name: Cache yarn dependencies
+        uses: actions/cache@v2
+        id: yarn-cache
+        with:
+          path: |
+            **\node_modules
+          key: vivid-cache-yarn-${{ hashFiles('**/yarn.lock') }}
+
+      - name: Install dependencies
+        if: steps.yarn-cache.outputs.cache-hit != 'true'
+        run: yarn install
+        env:
+          ARTIFACTORY_AUTH_TOKEN: ${{secrets.ARTIFACTORY_AUTH_TOKEN}}
+
+      - name: Build Demo
+        run: yarn build:deploy
+
+      - name: Deploy 🚀
+        uses: JamesIves/github-pages-deploy-action@3.7.1
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BRANCH: gh-pages # The branch the action should deploy to.
+          FOLDER: dist/apps/unicorn-hunt # The folder the action should deploy.
+          CLEAN: true # Automatically remove deleted files from the deploy branch
+
+
+
+
+
+
+
+
+
+
+
