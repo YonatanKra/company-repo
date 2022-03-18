@@ -26,31 +26,9 @@
           "e2e"
         ],
         "canTrackAnalytics": false,
-        "showUsageWarnings": true
+        "showUsageWarnings": true,
+        "parallel": 1
       }
-    }
-  },
-  "projects": {
-    "api": {
-      "tags": []
-    },
-    "api-interfaces": {
-      "tags": []
-    },
-    "cards-grid": {
-      "tags": []
-    },
-    "sticky-scroll": {
-      "tags": []
-    },
-    "unicorn-hunt": {
-      "tags": []
-    },
-    "unicorn-hunt-e2e": {
-      "tags": [],
-      "implicitDependencies": [
-        "unicorn-hunt"
-      ]
     }
   },
   "cli": {
