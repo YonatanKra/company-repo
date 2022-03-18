@@ -19,20 +19,18 @@
       "runner": "@nrwl/nx-cloud",
       "options": {
         "accessToken": "ZGU0MDk5MGYtNGY3OS00Yjc0LWJlZmYtZjhiMzlmZWZkOWZifHJlYWQtd3JpdGU=",
-        "cacheableOperations": ["build", "test", "lint", "e2e"],
+        "cacheableOperations": [
+          "build",
+          "test",
+          "lint",
+          "e2e"
+        ],
         "canTrackAnalytics": false,
         "showUsageWarnings": true
       }
     }
   },
   "projects": {
-    "unicorn-hunt": {
-      "tags": []
-    },
-    "unicorn-hunt-e2e": {
-      "tags": [],
-      "implicitDependencies": ["unicorn-hunt"]
-    },
     "api": {
       "tags": []
     },
@@ -44,6 +42,47 @@
     },
     "sticky-scroll": {
       "tags": []
+    },
+    "unicorn-hunt": {
+      "tags": []
+    },
+    "unicorn-hunt-e2e": {
+      "tags": [],
+      "implicitDependencies": [
+        "unicorn-hunt"
+      ]
     }
+  },
+  "cli": {
+    "defaultCollection": "@nrwl/angular"
+  },
+  "defaultProject": "unicorn-hunt",
+  "generators": {
+    "@nrwl/angular": {
+      "application": {
+        "linter": "eslint"
+      },
+      "library": {
+        "linter": "eslint"
+      },
+      "storybook-configuration": {
+        "linter": "eslint"
+      }
+    },
+    "@nrwl/angular:application": {
+      "unitTestRunner": "jest",
+      "e2eTestRunner": "cypress"
+    },
+    "@nrwl/angular:library": {
+      "unitTestRunner": "jest"
+    }
+  },
+  "targetDependencies": {
+    "build": [
+      {
+        "target": "build",
+        "projects": "dependencies"
+      }
+    ]
   }
 }
